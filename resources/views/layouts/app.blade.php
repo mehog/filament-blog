@@ -189,14 +189,15 @@
                             <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium">
                                 <h4 class="text-xl font-semibold">Quick Links</h4>
                                 @forelse($setting->quick_links ?? [] as $link)
-                                    <a href="{{ $link['url'] }}"
-                                        class="transition duration-300 will-change-transform hover:translate-x-1 hover:text-black motion-reduce:transition-none motion-reduce:hover:transform-none">
-                                        {{ $link['label'] }}
-                                    </a>
+                                <a href="{{ $link['url'] }}"
+                                    class="transition duration-300 will-change-transform hover:translate-x-1 hover:text-black motion-reduce:transition-none motion-reduce:hover:transform-none">
+                                    {{ $link['label'] }}
+                                </a>
                                 @empty
-                                    <p class="font-semibold text-gray-300">No links found</p>
+                                <p class="font-semibold text-gray-300">No links found</p>
                                 @endforelse
                             </div>
+                            @if (config('filamentblog.newsletter.enabled'))
                             <div class="flex flex-col items-start gap-3 text-sm font-medium">
                                 <div class="relative overflow-hidden rounded-2xl bg-slate-100 px-6 py-4 text-black">
                                     <div class="mb-3 pb-2 text-xl font-semibold">
@@ -211,7 +212,7 @@
                                                 @csrf
                                                 <label hidden for="email-address">Email</label>
                                                 @error('email')
-                                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                                <span class="text-xs text-red-500">{{ $message }}</span>
                                                 @enderror
                                                 <div class="w-100 relative">
                                                     <input autocomplete="email"
@@ -220,15 +221,15 @@
                                                         placeholder="Enter your email" type="email">
                                                     <button type="submit"
                                                         class="absolute right-4 top-1/2 -translate-y-1/2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-primary h-8 w-8"
-                                                            viewBox="0 0 256 256">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="text-primary h-8 w-8" viewBox="0 0 256 256">
                                                             <path fill="currentColor"
                                                                 d="m220.24 132.24l-72 72a6 6 0 0 1-8.48-8.48L201.51 134H40a6 6 0 0 1 0-12h161.51l-61.75-61.76a6 6 0 0 1 8.48-8.48l72 72a6 6 0 0 1 0 8.48" />
                                                         </svg>
                                                     </button>
                                                 </div>
                                                 @if (session('success'))
-                                                    <span class="text-green-500">{{ session('success') }}</span>
+                                                <span class="text-green-500">{{ session('success') }}</span>
                                                 @endif
                                             </form>
                                         </div>
@@ -237,6 +238,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

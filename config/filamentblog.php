@@ -49,4 +49,29 @@ return [
         'site_key' => env('RECAPTCHA_SITE_KEY'),
         'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     ],
+
+    'post' => [
+        'comments' => [
+            'enabled' => false,
+        ],
+    ],
+
+    'header' => [
+        'search' => [
+            'enabled' => false,
+        ],
+    ],
+
+    'disk' => [
+        'base_path' => ''
+    ],
+
+    'tiptap' => [
+        'disk' => 'public',
+        'disk_directory' => 'blog-posts',
+    ],
+
+    'newsletter' => [
+        'enabled' => false,
+    ],
 ];

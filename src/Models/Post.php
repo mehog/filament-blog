@@ -132,7 +132,7 @@ class Post extends Model
 
     protected function getFeaturePhotoAttribute()
     {
-        return asset('storage/'.$this->cover_photo_path);
+        return config('filamentblog.disk.base_path') . $this->cover_photo_path;
     }
 
     public static function getForm()
@@ -176,6 +176,8 @@ class Post extends Model
                                 ->columnSpanFull(),
                         ]),
                     TiptapEditor::make('body')
+                        ->disk(config('filamentblog.tiptap.disk') ?? 'public')
+                        ->directory(config('filamentblog.tiptap.disk_directory') ?? 'blog-posts')
                         ->profile('default')
                         ->disableFloatingMenus()
                         ->extraInputAttributes(['style' => 'max-height: 30rem; min-height: 24rem'])

@@ -38,12 +38,12 @@ class Setting extends Model
 
     protected function getLogoImageAttribute()
     {
-        return asset('storage/' . $this->logo);
+        return config('filamentblog.disk.base_path') . $this->logo;
     }
 
     protected function getFavIconImageAttribute()
     {
-        return asset('storage/' . $this->favicon);
+        return config('filamentblog.disk.base_path') . $this->favicon;
     }
 
     protected static function newFactory()
