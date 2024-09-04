@@ -1,13 +1,13 @@
 <x-blog-layout>
-    <section class="py-10">
-        <header class="container mx-auto px-6">
+    <section class="py-5">
+        <header class="container mx-auto px-5">
             <h3 class="inherits-color text-balance leading-tighter relative z-10 text-3xl font-semibold tracking-tight">
                 Latest News / Blogs
             </h3>
         </header>
     </section>
-    <section class="pb-16 pt-8">
-        <div class="container mx-auto">
+    <section class="pb-16 pt-4">
+        <div class="container mx-auto px-5">
             <div class="grid gap-x-14 gap-y-14 sm:grid-cols-3">
                 @forelse ($posts as $post)
                     <x-blog-card :post="$post"/>

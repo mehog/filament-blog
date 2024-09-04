@@ -8,7 +8,7 @@
     </section>
     <section class="pb-16 pt-8">
         <div class="container mx-auto">
-            <div class="grid grid-cols-3 gap-x-14 gap-y-14">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-14">
                 @forelse ($posts as $post)
                     <x-blog-card :post="$post"/>
                 @empty

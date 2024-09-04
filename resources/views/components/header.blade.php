@@ -15,9 +15,6 @@
                         @endif
                     </a>
                     <div class="gap-x-5 flex">
-                        <a href="{{ route('my-plan.index') }}" class="font-semibold text-md text-primary-600">
-                            <span>My plan</span>
-                        </a>
                         <a href="{{ route('filamentblog.post.index') }}"
                             class="hidden sm:block font-semibold text-md hover:text-primary-600">
                             <span>Blog</span>
