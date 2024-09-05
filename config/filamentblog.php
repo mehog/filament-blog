@@ -54,6 +54,11 @@ return [
         'comments' => [
             'enabled' => false,
         ],
+        'mobile' => [
+            'footer' => [
+                'enabled' => true,
+            ],
+        ]
     ],
 
     'header' => [
