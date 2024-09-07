@@ -5,6 +5,7 @@ namespace Firefly\FilamentBlog\Http\Controllers;
 use Firefly\FilamentBlog\Facades\SEOMeta;
 use Firefly\FilamentBlog\Models\NewsLetter;
 use Firefly\FilamentBlog\Models\Post;
+use Firefly\FilamentBlog\Models\Category;
 use Firefly\FilamentBlog\Models\ShareSnippet;
 use Illuminate\Http\Request;
 
@@ -12,14 +13,17 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        SEOMeta::setTitle('Blog | '.config('app.name')) ;
+        SEOMeta::setTitle('Blog | '.config('app.name'));
+        // fetch all categories with 3 latest posts
+        $categories = Category::query()->with([
+            'posts' => fn ($query) => $query->published()->latest()->take(3),
+            'posts.user',
+            'posts.categories',
+            'posts.tags',
+        ])->get();
 
-        $posts = Post::query()->with(['categories', 'user', 'tags'])
-            ->published()
-            ->paginate(10);
-
-        return view('filament-blog::blogs.index', [
-            'posts' => $posts,
+        return view('filament-blog::blogs.all-post', [
+            'categories' => $categories,
         ]);
     }
 

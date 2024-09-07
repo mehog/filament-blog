@@ -15,8 +15,8 @@
                                     {{ $post->title }}
                                 </h1>
                                 <div class="mb-6 h-full w-full overflow-hidden rounded bg-slate-200">
-                                    <img class="flex h-full min-h-[400px] items-center justify-center object-cover object-top text-sm text-xl font-semibold text-slate-400 w-full"
-                                        src="{{ $post->featurePhoto  }}" alt="{{ $post->photo_alt_text }}">
+                                    <img class="w-full" src="{{ $post->featurePhoto  }}"
+                                        alt="{{ $post->photo_alt_text }}">
                                 </div>
                                 <div class="mb-6">
                                     <p>{{ $post->sub_title }}</p>
@@ -103,6 +103,7 @@
             </div>
         </div>
 
+        @if ($post->relatedPosts()->count())
         <div>
             <div>
                 <div class="relative mb-6 flex items-center gap-x-8">
@@ -113,9 +114,9 @@
                         <span class="h-0.5 w-full rounded-full bg-slate-200"></span>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-x-12 gap-y-10">
+                <div class="grid md:grid-cols-2 sm:grid-cols-2 gap-x-6 gap-y-10">
                     @forelse($post->relatedPosts() as $post)
-                    <x-blog-card :post="$post" />
+                    <x-blog-card :post="$post" :showAuthor="false" />
                     @empty
                     <div class="col-span-3">
                         <p class="text-center text-xl font-semibold text-gray-300">No related posts found.</p>
@@ -134,6 +135,8 @@
                 </div> --}}
             </div>
         </div>
+        @endif
+
         </div>
     </section>
     {!! $shareButton?->script_code !!}
