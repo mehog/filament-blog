@@ -6,7 +6,7 @@
                 <span class="opacity-30">/</span>
                 <a href="{{ route('filamentblog.post.index') }}" class="opacity-60">Blog</a>
             </div>
-            <div class="mx-auto mb-20 space-y-10">
+            <div class="mx-auto mb-10 space-y-10">
                 <div class="grid">
                     <div class="space-y-10">
                         <div>

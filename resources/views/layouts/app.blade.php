@@ -144,6 +144,12 @@
             border-radius: 5px;
         }
 
+        article ol {
+            list-style-type: number;
+            padding: 0 15px;
+            margin: 15px;
+        }
+
         /* share this */
         .sharethis-inline-share-buttons {
             display: flex !important;
