@@ -9,7 +9,7 @@ class HeaderCategory extends Component
     public function render()
     {
         return view('filament-blog::components.header-category', [
-            'categories' => \Firefly\FilamentBlog\Models\Category::all(),
+            'category_groups' => \Firefly\FilamentBlog\Models\CategoryGroup::with(['categories'])->get(),
         ]);
     }
 }
