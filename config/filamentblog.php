@@ -34,11 +34,17 @@ return [
         'columns' => [
             'name' => 'name',
             'avatar' => 'profile_photo_path', // column name for avatar
+            'author_title' => 'author_title', // column name for author title
         ],
-        'select_user_callback' => function () {
+        'select_author_callback' => function () {
             // Default callback logic to get all users
             return \App\Models\User::query();
         },
+        'media_library' => [
+            'avatar' => function ($user) {
+                return \App\Models\User::avatar($user);
+            },
+        ],
     ],
     'seo' => [
         'meta' => [

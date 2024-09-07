@@ -221,7 +221,7 @@ class Post extends Model
                         ->relationship(
                             'user',
                             config('filamentblog.user.columns.name'),
-                            fn () => call_user_func(config('filamentblog.user.select_user_callback')) // Use the callback here
+                            fn () => call_user_func(config('filamentblog.user.select_author_callback')) // Use the callback here
                         )
                         ->searchable()
                         ->nullable(false)

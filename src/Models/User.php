@@ -58,4 +58,10 @@ class User extends Authenticatable
     {
         return new UserFactory();
     }
+
+    public static function avatar($user)
+    {
+        $avatarColumn = config('filamentblog.user.columns.avatar');
+        return $user->$avatarColumn ?? '/images/avatar_default.png';
+    }
 }

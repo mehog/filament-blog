@@ -22,13 +22,6 @@
                 {!! Str::limit($post->sub_title) !!}
             </p>
         </div>
-        <div class="flex items-center gap-4">
-            <img class="h-14 w-14 overflow-hidden rounded-full bg-zinc-300 object-cover md:object-fill text-[0]" src="{{ $post->user->avatar }}" alt="{{ $post->user->name() }}">
-            <div>
-                <span title="{{ $post->user->name() }}" class="block max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap font-semibold">{{ $post->user->name() }}</span>
-                <span class="block whitespace-nowrap text-sm font-medium font-semibold text-zinc-600">
-                    {{ $post->formattedPublishedDate() }}</span>
-            </div>
-        </div>
+        @include('filament-blog::partials.author', ['post' => $post])
     </div>
 </div>
