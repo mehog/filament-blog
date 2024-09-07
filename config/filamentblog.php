@@ -35,6 +35,10 @@ return [
             'name' => 'name',
             'avatar' => 'profile_photo_path', // column name for avatar
         ],
+        'select_user_callback' => function () {
+            // Default callback logic to get all users
+            return \App\Models\User::query();
+        },
     ],
     'seo' => [
         'meta' => [

@@ -217,11 +217,15 @@ class Post extends Model
                                 ->minDate(now()->addMinutes(5))
                                 ->native(false),
                         ]),
-                    Select::make(config('filamentblog.user.foreign_key'))
-                        ->relationship('user', config('filamentblog.user.columns.name'))
+                        Select::make(config('filamentblog.user.foreign_key'))
+                        ->relationship(
+                            'user',
+                            config('filamentblog.user.columns.name'),
+                            fn () => call_user_func(config('filamentblog.user.select_user_callback')) // Use the callback here
+                        )
+                        ->searchable()
                         ->nullable(false)
-                        ->default(auth()->id()),
-
+                        ->label('Author')
                 ]),
         ];
     }
