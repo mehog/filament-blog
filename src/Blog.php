@@ -20,6 +20,7 @@ class Blog implements Plugin
     public function register(Panel $panel): void
     {
         $panel->resources([
+            Resources\CategoryGroupResource::class,
             Resources\CategoryResource::class,
             Resources\PostResource::class,
             Resources\TagResource::class,

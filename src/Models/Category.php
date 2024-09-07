@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Filament\Forms\Components\Select;
+use Firefly\FilamentBlog\Models\CategoryGroup;
 
 class Category extends Model
 {
@@ -18,11 +21,18 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
+        'group_id'
     ];
 
     protected $casts = [
         'id' => 'integer',
     ];
+
+    // Relationship with category group
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(CategoryGroup::class, 'group_id');
+    }
 
     public function posts(): BelongsToMany
     {
@@ -46,6 +56,11 @@ class Category extends Model
                 ->unique(config('filamentblog.tables.prefix').'categories', 'slug', null, 'id')
                 ->readOnly()
                 ->maxLength(255),
+            // add category group relationship
+            Select::make('group_id')
+                ->relationship('group', 'name')
+                ->nullable(false)
+                ->required(),
         ];
     }
 

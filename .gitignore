@@ -1,4 +1,5 @@
 /vendor
 /database/migrations/*.php
 !/database/migrations/2024_05_11_152936_create_add_prefix_on_all_blog_tables.php
+!/database/migrations/2024_09_07_000000_add_category_groups_and_group_id_to_categories.php
 .github
