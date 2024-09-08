@@ -19,6 +19,7 @@ class PostController extends Controller
 
         foreach ($categories as $category) {
             $category->posts = $category->posts()
+                ->published()
                 ->orderBy('created_at', 'desc')
                 ->take(4)
                 ->get();
