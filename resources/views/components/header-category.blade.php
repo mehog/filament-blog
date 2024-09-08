@@ -1,3 +1,4 @@
+@props(['logo' => null])
 @foreach ($category_groups as $group)
 <div class="relative group hidden lg:block">
     <button class="flex items-center justify-center font-semibold text-md hover:text-primary-600 gap-x-2">
@@ -27,26 +28,37 @@
 @endforeach
 
 <!-- Hamburger Menu Button -->
-<button id="menuButton" class="block lg:hidden text-gray-700 focus:outline-none absolute right-5 top-0">
+<button id="menuButton" class="block lg:hidden text-gray-700 focus:outline-none absolute right-5 top-0 z-50">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
 </button>
 
+<!-- Overlay Background -->
+<div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden backdrop-blur-sm z-40"></div>
+
 <!-- Sliding Menu -->
 <div id="mobileMenu"
-    class="fixed top-0 left-0 w-72 bg-white h-full transform -translate-x-full menu-slide shadow-lg z-50"
+    class="fixed top-0 left-0 w-72 max-h-screen bg-white h-full transform -translate-x-full menu-slide shadow-lg z-50 overflow-y-auto"
     style="transition: transform 0.3s ease">
-    <div class="p-4">
-        <!-- Close Button -->
-        <button id="closeMenuButton" class="mb-4 text-gray-700 focus:outline-none absolute right-4 top-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+    <div class="p-4 relative">
+        <!-- Logo at the top left -->
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center">
+                @if($logo)
+                <img src="{{ $logo }}" alt="Logo" class="max-h-[60px] h-8 w-auto" style="min-width: 100px" />
+                @endif
+            </div>
+            <!-- Close Button -->
+            <button id="closeMenuButton" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
         <nav class="mt-10">
-            <!-- Added margin top to push the menu items down -->
             <ul>
                 @foreach ($category_groups as $group)
                 <li class="py-2">
@@ -74,12 +86,21 @@
     const menuButton = document.getElementById('menuButton');
     const closeMenuButton = document.getElementById('closeMenuButton');
     const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('-translate-x-full');
-    });
+    // Function to open the menu
+    const openMenu = () => {
+        mobileMenu.classList.remove('-translate-x-full');
+        menuOverlay.classList.remove('hidden');
+    };
 
-    closeMenuButton.addEventListener('click', () => {
+    // Function to close the menu
+    const closeMenu = () => {
         mobileMenu.classList.add('-translate-x-full');
-    });
+        menuOverlay.classList.add('hidden');
+    };
+
+    menuButton.addEventListener('click', openMenu);
+    closeMenuButton.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu); // Close when clicking outside the menu
 </script>

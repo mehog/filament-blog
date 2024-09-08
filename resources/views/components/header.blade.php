@@ -1,4 +1,4 @@
-@props(['title' =>'Firefly Blog', 'logo' => null] )
+@props(['title' =>'Blog', 'logo' => null] )
 <header @click.outside="showSearchModal = false" x-data="{ showSearchModal: false }"
     class="sticky top-0 z-[94035] mb-4">
     <div class="py-4 bg-white border-b">
@@ -19,7 +19,7 @@
                             class="hidden lg:block font-semibold text-md hover:text-primary-600">
                             <span>Blog</span>
                         </a>
-                        <x-blog-header-category />
+                        <x-blog-header-category logo="{{$logo}}" />
                     </div>
                 </div>
                 @if (config('filamentblog.header.search.enabled'))
