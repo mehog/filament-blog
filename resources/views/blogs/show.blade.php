@@ -4,6 +4,13 @@
     <meta name="description" content="{{ $post->sub_title }}">
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->sub_title }}">
+    <meta property="og:image" content="{{ $post->featurePhoto }}">
+    <meta property="og:image:alt" content="{{ $post->photo_alt_text }}">
+    <meta property="og:url" content="{{ request()->fullUrl() }}">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="{{ $post->created_at }}">
+    <meta property="article:modified_time" content="{{ $post->updated_at }}">
+    <link rel="canonical" href="{{ request()->fullUrl() }}">
     <!-- Add any other meta tags specific to this page -->
     @endsection
     <section class="pb-16">

@@ -4,6 +4,7 @@
     <meta name="description" content="{{ $category->description }}">
     <meta property="og:title" content="{{ $category->name }}">
     <meta property="og:description" content="{{ $category->description }}">
+    <lnk rel="canonical" href="{{ route('filamentblog.category.post', ['category' => $category->slug]) }}">
     <!-- Add any other meta tags specific to this page -->
     @endsection
     <section>
