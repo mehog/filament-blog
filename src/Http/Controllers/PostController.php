@@ -15,12 +15,14 @@ class PostController extends Controller
     {
         SEOMeta::setTitle('Blog | '.config('app.name'));
         // fetch all categories with 3 latest posts
-        $categories = Category::query()->with([
-            'posts' => fn ($query) => $query->published()->latest()->take(3),
-            'posts.user',
-            'posts.categories',
-            'posts.tags',
-        ])->get();
+        $categories = Category::query()->get();
+
+        foreach ($categories as $category) {
+            $category->posts = $category->posts()
+                ->orderBy('created_at', 'desc')
+                ->take(4)
+                ->get();
+        }
 
         return view('filament-blog::blogs.all-post', [
             'categories' => $categories,

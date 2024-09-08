@@ -10,7 +10,7 @@
     {!! $setting?->google_console_code !!}
     {!! $setting?->google_analytic_code !!}
     {!! $setting?->google_adsense_code !!}
-
+    @yield('meta')
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,10 +1,20 @@
 <x-blog-layout>
+    <section>
+        <header class="container mx-auto mb-4 px-5 pb-4 mt-5 text-left">
+            <h1 class="inherits-color text-balance leading-tighter relative z-10 text-3xl font-semibold tracking-tight">
+                {{ config('filamentblog.pages.overview.title') }}
+            </h1>
+            <p class="mt-4">
+                {{ config('filamentblog.pages.overview.description') }}
+            </p>
+        </header>
+    </section>
     @foreach ($categories as $category)
     <section class="py-5">
         <header class="container mx-auto px-5">
-            <h3 class="inherits-color text-balance leading-tighter relative z-10 text-3xl font-semibold tracking-tight">
+            <h2 class="inherits-color text-balance leading-tighter relative z-10 text-3xl font-semibold tracking-tight">
                 {{ $category->name }}
-            </h3>
+            </h2>
         </header>
     </section>
     <section class="pb-16 pt-4">

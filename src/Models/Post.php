@@ -224,6 +224,7 @@ class Post extends Model
                             fn () => call_user_func(config('filamentblog.user.select_author_callback')) // Use the callback here
                         )
                         ->searchable()
+                        ->preload()
                         ->nullable(false)
                         ->label('Author')
                 ]),

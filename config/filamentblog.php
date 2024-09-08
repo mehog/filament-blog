@@ -89,4 +89,11 @@ return [
     'newsletter' => [
         'enabled' => false,
     ],
+
+    'pages' => [
+        'overview' => [
+            'title' => 'Blog',
+            'description' => 'Welcome to our Blog',
+        ],
+    ]
 ];

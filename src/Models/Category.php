@@ -21,7 +21,8 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'group_id'
+        'group_id',
+        'description'
     ];
 
     protected $casts = [
@@ -56,6 +57,8 @@ class Category extends Model
                 ->unique(config('filamentblog.tables.prefix').'categories', 'slug', null, 'id')
                 ->readOnly()
                 ->maxLength(255),
+            TextInput::make('description')
+                ->maxLength(1000),
             // add category group relationship
             Select::make('group_id')
                 ->relationship('group', 'name')

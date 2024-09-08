@@ -1,10 +1,21 @@
 <x-blog-layout>
+    @section('meta')
+    <meta name="title" content="{{ $post->title }}">
+    <meta name="description" content="{{ $post->sub_title }}">
+    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:description" content="{{ $post->sub_title }}">
+    <!-- Add any other meta tags specific to this page -->
+    @endsection
     <section class="pb-16">
         <div class="container mx-auto px-5" style="max-width: 700px">
             <div class="mb-5 flex gap-x-2 text-sm font-semibold">
-                <a href="/" class="opacity-60">Home</a>
-                <span class="opacity-30">/</span>
                 <a href="{{ route('filamentblog.post.index') }}" class="opacity-60">Blog</a>
+                @foreach ($post->categories as $category)
+                <span class="opacity-30">/</span>
+                <a href="{{ route('filamentblog.category.post', ['category' => $category->slug]) }}" class="opacity-60">
+                    {{ $category->name }}
+                </a>
+                @endforeach
             </div>
             <div class="mx-auto mb-10 space-y-10">
                 <div class="grid">
@@ -17,20 +28,6 @@
                                 <div class="mb-6 h-full w-full overflow-hidden rounded bg-slate-200">
                                     <img class="w-full" src="{{ $post->featurePhoto  }}"
                                         alt="{{ $post->photo_alt_text }}">
-                                </div>
-                                <div class="mb-6">
-                                    <p>{{ $post->sub_title }}</p>
-                                    <div class="mt-2">
-                                        @foreach ($post->categories as $category)
-                                        <a
-                                            href="{{ route('filamentblog.category.post', ['category' => $category->slug]) }}">
-                                            <span
-                                                class="bg-primary-200 text-primary-800 mr-2 inline-flex rounded-full px-2 py-1 text-xs font-semibold">{{
-                                                $category->name }}
-                                            </span>
-                                        </a>
-                                        @endforeach
-                                    </div>
                                 </div>
                                 <div>
                                     <article class="m-auto leading-6">
