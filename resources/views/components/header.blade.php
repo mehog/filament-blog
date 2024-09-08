@@ -2,7 +2,7 @@
 <header @click.outside="showSearchModal = false" x-data="{ showSearchModal: false }"
     class="sticky top-0 z-[94035] mb-4">
     <div class="py-4 bg-white border-b">
-        <div class="container mx-auto">
+        <div class="container mx-auto relative">
             <div class="flex justify-between gap-x-4">
                 <div class="flex items-center gap-x-10">
                     <a href="{{config('filamentblog.route.home.url') ?? config('app.url')}}">
@@ -16,7 +16,7 @@
                     </a>
                     <div class="gap-x-5 flex">
                         <a href="{{ route('filamentblog.post.index') }}"
-                            class="hidden sm:block font-semibold text-md hover:text-primary-600">
+                            class="hidden lg:block font-semibold text-md hover:text-primary-600">
                             <span>Blog</span>
                         </a>
                         <x-blog-header-category />
