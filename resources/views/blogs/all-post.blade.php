@@ -1,4 +1,11 @@
 <x-blog-layout>
+    @section('meta')
+    <meta name="title" content="{{config('filamentblog.pages.overview.title')}}">
+    <meta name="description" content="{{config('filamentblog.pages.overview.description')}}">
+    <meta property="og:title" content="{{config('filamentblog.pages.overview.title')}}">
+    <meta property="og:description" content="{{config('filamentblog.pages.overview.description')}}">
+    <link rel="canonical" href="{{ request()->fullUrl() }}">
+    @endsection
     <section>
         <header class="container mx-auto mb-4 px-5 pb-4 mt-5 text-left">
             <h1 class="inherits-color text-balance leading-tighter relative z-10 text-3xl font-semibold tracking-tight">

@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        SEOMeta::setTitle('Blog | '.config('app.name'));
+        SEOMeta::setTitle(config('filamentblog.pages.overview.title'));
         // fetch all categories with 3 latest posts
         $categories = Category::query()->get();
 
