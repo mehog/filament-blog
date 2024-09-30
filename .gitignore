@@ -4,3 +4,4 @@
 !/database/migrations/2024_09_07_000000_add_category_groups_and_group_id_to_categories.php
 !/database/migrations/2024_09_08_000000_update_categories_add_description.php
 .github
+.DS_Store

@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        @if ($post->relatedPosts()->count())
+        @if (config('filamentblog.post.related.enabled') && $post->relatedPosts()->count())
         <div>
             <div>
                 <div class="relative mb-6 flex items-center gap-x-8">

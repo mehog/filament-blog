@@ -68,6 +68,9 @@ return [
             'footer' => [
                 'enabled' => true,
             ],
+        ],
+        'related' => [
+            'enabled' => true
         ]
     ],
 
