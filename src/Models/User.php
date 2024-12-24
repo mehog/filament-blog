@@ -64,4 +64,9 @@ class User extends Authenticatable
         $avatarColumn = config('filamentblog.user.columns.avatar');
         return $user->$avatarColumn ?? '/images/avatar_default.png';
     }
+
+    public static function getAuthors()
+    {
+        return self::all();
+    }
 }

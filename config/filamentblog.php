@@ -36,14 +36,9 @@ return [
             'avatar' => 'profile_photo_path', // column name for avatar
             'author_title' => 'author_title', // column name for author title
         ],
-        'select_author_callback' => function () {
-            // Default callback logic to get all users
-            return \App\Models\User::query();
-        },
+        'select_author_callback' => [\App\Models\User::class, 'getAuthors'],
         'media_library' => [
-            'avatar' => function ($user) {
-                return \App\Models\User::avatar($user);
-            },
+            'avatar' => [\App\Models\User::class, 'avatar'],
         ],
     ],
     'seo' => [
