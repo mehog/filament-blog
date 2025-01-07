@@ -63,7 +63,7 @@ class Setting extends Model
                         ->required()
                         ->maxLength(155)
                         ->minLength(3),
-                    Textarea::make('description')
+                    TextInput::make('description')
                         ->required()
                         ->minLength(10)
                         ->maxLength(1000)
@@ -83,16 +83,16 @@ class Setting extends Model
             Section::make('SEO')
                 ->description('Place your google analytic and adsense code here. This will be added to the head tag of your blog post only.')
                 ->schema([
-                    Textarea::make('google_console_code')
+                    TextInput::make('google_console_code')
                         ->startsWith('<meta')
                         ->nullable()
                         ->columnSpanFull(),
-                    Textarea::make('google_analytic_code')
+                    TextInput::make('google_analytic_code')
                         ->startsWith('<script')
                         ->endsWith('</script>')
                         ->nullable()
                         ->columnSpanFull(),
-                    Textarea::make('google_adsense_code')
+                    TextInput::make('google_adsense_code')
                         ->startsWith('<script')
                         ->endsWith('</script>')
                         ->nullable()
