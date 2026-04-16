@@ -6,6 +6,17 @@ use Firefly\FilamentBlog\Http\Controllers\PostController;
 use Firefly\FilamentBlog\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('vendor/filament-blog/filament-blog.css', function () {
+    $path = dirname(__DIR__).'/resources/dist/filament-blog.css';
+
+    abort_unless(is_file($path), 404);
+
+    return response()->file($path, [
+        'Content-Type' => 'text/css; charset=UTF-8',
+        'Cache-Control' => 'public, max-age=31536000, immutable',
+    ]);
+})->name('filament-blog.assets.css');
+
 Route::middleware(config('filamentblog.route.middleware'))
     ->prefix(config('filamentblog.route.prefix'))
     ->group(function () {

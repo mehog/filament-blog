@@ -38,6 +38,18 @@ The Filament Blog Plugin is a feature-rich plugin designed to enhance your blogg
 ```
 > - After set the prefix please run the migration by running the following command: 
 ``php artisan filament-blog:upgrade-tables``
+
+### Blog styles (Tailwind CSS)
+
+Public blog pages use Tailwind compiled to `resources/dist/filament-blog.css` and served via the `filament-blog.assets.css` route (no `cdn.tailwindcss.com` in production).
+
+If you change markup under `resources/views/`, rebuild and commit the CSS:
+
+```bash
+npm install
+npm run build:css
+```
+
 ## Installation
 If your project is not already using Filament, you can install it by running the following commands:
 ```bash
